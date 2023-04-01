@@ -1,3 +1,29 @@
+//Nombre y Apellido
+const titulo = document.getElementById('titulo')
+const inputNombre = document.getElementById('nombre')
+const inputApellido = document.getElementById('apellido')
+const formulario = document.getElementById('formulario')
+
+formulario.onsubmit = (e) =>{
+    e.preventDefault()
+    const datosUsuario = {
+        nombre: inputNombre.value,
+        apellido: inputApellido.value,
+    }
+    localStorage.setItem('datosUsuario', JSON.stringify(datosUsuario))
+    formulario.remove()
+    titulo.innerText = `Bienvenido ${datosUsuario.nombre} ${datosUsuario.apellido} a Tienda tu Moto`
+} 
+
+// Storage
+
+const datosUsuario = JSON.parse(localStorage.getItem('datosUsuario'))
+if(datosUsuario){
+    formulario.remove()
+    titulo.innerText = `Bienvenido ${datosUsuario.nombre} ${datosUsuario.apellido} a Tienda tu Moto`
+}
+
+//Div motos
 const divMotos = document.getElementById('divMotos')
 
 //clase
@@ -10,17 +36,19 @@ class Moto {
         this.image = image
     }
 }
+
+// Listado de motos
 const motos = [
     new Moto(1, 'Yamaha IBR 125', 1300,'img/Yamaha_IBR.jpg'),
     new Moto(2, 'Bajaj Rouser 125', 1500,'img/Rouser_125.jpg'),
-    new Moto(3, 'Bajaj Dominar 400', 2500,'img/Yamaha_IBR.jpg'),
-    new Moto(4, 'Yamaha FZ 150', 1700,'img/Yamaha_IBR.jpg'),
-    new Moto(5, 'Honda Wave 110', 900,'img/Yamaha_IBR.jpg'),
-    new Moto(6, 'Honda XR 150', 1900,'img/Yamaha_IBR.jpg'),
-    new Moto(7, 'Ninja Kawasaki 400', 5000,'img/Yamaha_IBR.jpg'),
-    new Moto(8, 'Ninja Kawasaki 650', 7000,'img/Yamaha_IBR.jpg'),
-    new Moto(9, 'Kymco Downtown 350', 4000,'img/Yamaha_IBR.jpg'),
-    new Moto(10, 'Honda Twister 250', 3300,'img/Yamaha_IBR.jpg'),
+    new Moto(3, 'Bajaj Dominar 400', 2500,'img/bajaj_dominar.jpg'),
+    new Moto(4, 'Yamaha FZ 150', 1700,'img/yamaha_fz_150.jpg'),
+    new Moto(5, 'Honda Wave 110', 900,'img/honda_wave.jpg'),
+    new Moto(6, 'Honda XR 150', 1900,'img/honda_xr_150.jpg'),
+    new Moto(7, 'Ninja Kawasaki 400', 5000,'img/ninja_400.jpg'),
+    new Moto(8, 'Ninja Kawasaki 650', 7000,'img/ninja_650.jpg'),
+    new Moto(9, 'Kymco Downtown 350', 4000,'img/kymco_dowtown_350.jpg'),
+    new Moto(10, 'Honda Twister 250', 3300,'img/honda_twister_250.jpg'),
 ]
 
 motos.forEach(m => {
@@ -34,13 +62,16 @@ motos.forEach(m => {
       </div>`
 })
 
+// carrito
 const carrito = []
 
+// botones
 const agregarBotones = document.querySelectorAll('.btn-primary')
 
 
 agregarBotones.forEach(btn => {
     btn.onclick = () => {
+        
         const moto = motos.find(m => m.id === parseInt(btn.id))
         const motoCarrito = {
             id: moto.id,
@@ -56,12 +87,12 @@ agregarBotones.forEach(btn => {
         } else{
             motoEnCarrito.cantidad++
         }
-
-        console.log(carrito)
+        
     }
 })
 
 
+// Listado de productos elegidos / Final de la compra
 const thead = document.querySelector('#thead')
 const tbody = document.querySelector('#tbody')
 const finalizarBoton = document.querySelector('#finCompra')

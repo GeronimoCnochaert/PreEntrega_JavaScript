@@ -11,7 +11,17 @@
 </head>
 
 <body>
+    <h2 id="titulo">Bienvenido a Tienda tu Moto</h2>
+    <form id="formulario">
+        <div class="input-group divNombre">
+            <span class="input-group-text">Nombre y Apellido</span>
+            <input type="text" name="nombre" class="form-control" id="nombre">
+            <input type="text" name="apellido" class="form-control" id="apellido">
+            <input type="submit" value="ENVIAR" class="btn btn-secondary">
+        </div>
+    </form>
     <div class="row" id="divMotos"></div>
+
     <button id="finCompra" class="btn btn-warning">FINALIZAR COMPRA</button>
     <div id="divCarrito">
         <table class="table table-dark">
