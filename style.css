@@ -4,25 +4,9 @@
     box-sizing: border-box;
 }
 
-.divNombre{
-    padding: 15px;
-    margin: 30px;
-    
-}
 
-.cardMoto{
-    display: flex;
+.cardProducts{
+    margin: 15px;
     padding: 10px;
-    margin: 5px;
-    width: 250px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-}
-
-
-button{
-    position: relative;
-    border-radius: 10px;
-
+    
 }
